@@ -23,8 +23,15 @@ You will need
 * npm or yarn
 
 Steps
-- Copy and rename .env.example to .env and update the DB_* environment var per your system
-- 
-- 
-  
+- Rename .env.example to .env and update the DB_* environment variables per your system
+- `composer install`
+- `php artisan migrate`
+- `php artisan key:generate`
+- `npm install`
+- Compile JS and Scss files with `npm run dev`
+- Run development server with `php artisan serve` 
+- Navigate to the address in the last command and enjoy
 
+Pages
+- Home or Guest `/`
+- Admin `/admin`
