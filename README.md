@@ -9,6 +9,8 @@ Public Resource Drive is a resource manager.
 
 ## Screenshot
 See the screenshot below:
+![image](https://user-images.githubusercontent.com/40448868/134767089-d4459886-e6bd-4953-a6a0-7deef2ebbb1c.png)
+
 
 ## Built with
 * Frontend: [Vue.js](https://vuejs.org/) + [Vuex](https://vuex.vuejs.org/)
