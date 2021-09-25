@@ -45,7 +45,7 @@
                                     ])
 
                                 @empty
-                                    <div>No resources found</div>
+                                    <div class="px-3 pt-3">No resources found</div>
                                 @endforelse
 
                             </div>

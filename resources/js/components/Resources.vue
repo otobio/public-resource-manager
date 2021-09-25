@@ -8,7 +8,7 @@
 		>
 		</component>
 	</div>
-	<div v-else>No resources found</div>
+	<div class="px-3 pt-3" v-else>No resources found</div>
 </template>
 
 <script>
