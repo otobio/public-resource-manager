@@ -40,25 +40,10 @@
                                 @forelse ((object)$resources as $resource)
                                     @php($resource = (object) $resource)
 
-                                    @switch ($resource->type)
-                                        @case('pdf')
-                                            @include('visitor.partials.pdf-view', [
-                                            'resource' => $resource,
-                                            ])
-                                        @break
+                                    @includeIf("visitor.partials.{$resource->type}", [
+                                        'resource' => $resource,
+                                    ])
 
-                                        @case('link')
-                                            @include('visitor.partials.link', [
-                                            'resource' => $resource,
-                                            ])
-                                        @break
-
-                                        @case('snippet')
-                                            @include('visitor.partials.snippet', [
-                                            'resource' => $resource,
-                                            ])
-                                        @break
-                                    @endswitch
                                 @empty
                                     <div>No resources found</div>
                                 @endforelse

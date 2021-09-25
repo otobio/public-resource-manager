@@ -1,21 +1,26 @@
 <template>
 	<div v-if="resources.length" class="resource-manager">
-		<resource-item
+		<component
 			v-for="resource of resources"
+            :is="`resource-view-${resource.type}`"
 			:key="resource.id"
 			:resource="resource"
 		>
-		</resource-item>
+		</component>
 	</div>
 	<div v-else>No resources found</div>
 </template>
 
 <script>
-import ResourceItem from './ResourceItem.vue'
+
+import ResourceViewPdf from "./Resource/View/Pdf.vue"
+import ResourceViewLink from "./Resource/View/Link.vue"
+import ResourceViewSnippet from "./Resource/View/Snippet.vue"
+
 import { mapState } from 'vuex'
 
 export default {
-	components: { ResourceItem },
+	components: { ResourceViewPdf, ResourceViewLink, ResourceViewSnippet },
     computed : {
         ...mapState({
             resources: state => state.resources
