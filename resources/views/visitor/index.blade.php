@@ -18,7 +18,7 @@
 
                     <div class="content-panel">
                         <div class="content-header-wrapper">
-                            <h2 class="title">Public Resource Drive <a href="{{ route('admin.dashboard') }}"><i class="fa fa-pencil"></i></a></h2>
+                            <h2 class="title">Public Resource Drive <a class="" href="{{ route('admin.dashboard') }}"><i class="fa fa-pencil"></i></a></h2>
                         </div>
                         <div class="content-utilities">
                             <div class="actions">
@@ -26,9 +26,9 @@
                                     <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button" aria-expanded="false">{{ !request('type') ? "All" : ucfirst(Str::plural(request('type'))) }} <span class="caret"></span></button>
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="{{ route('visitor.home') }}"> All</a></li>
-                                        <li><a class="dropdown-item" href="{{ route('visitor.home', ['type' => 'pdf']) }}"><i class="fa fa-file"></i> Pdfs</a></li>
-                                        <li><a class="dropdown-item" href="{{ route('visitor.home', ['type' => 'snippet']) }}"><i class="fa fa-file-image-o"></i> Snippets</a></li>
-                                        <li><a class="dropdown-item" href="{{ route('visitor.home', ['type' => 'link']) }}"><i class="fa fa-file-video-o"></i> Links</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('visitor.home', ['type' => 'pdf']) }}"><i class="fa fa-file-pdf-o"></i> Pdfs</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('visitor.home', ['type' => 'snippet']) }}"><i class="fa fa-file-code-o"></i> Snippets</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('visitor.home', ['type' => 'link']) }}"><i class="fa fa-link"></i> Links</a></li>
                                     </ul>
                                 </div>
 
@@ -37,28 +37,31 @@
                         <div class="drive-wrapper drive-grid-view">
                             <div class="grid-items-wrapper">
 
-                                @foreach ((object)$resources as $resource)
-                                @php($resource = (object) $resource)
-                                @switch ($resource->type)
-                                @case('pdf')
-                                @include('visitor.partials.pdf-view', [
-                                'resource' => $resource,
-                                ])
-                                @break
+                                @forelse ((object)$resources as $resource)
+                                    @php($resource = (object) $resource)
 
-                                @case('link')
-                                @include('visitor.partials.link', [
-                                'resource' => $resource,
-                                ])
-                                @break
+                                    @switch ($resource->type)
+                                        @case('pdf')
+                                            @include('visitor.partials.pdf-view', [
+                                            'resource' => $resource,
+                                            ])
+                                        @break
 
-                                @case('snippet')
-                                @include('visitor.partials.snippet', [
-                                'resource' => $resource,
-                                ])
-                                @break
-                                @endswitch
-                                @endforeach
+                                        @case('link')
+                                            @include('visitor.partials.link', [
+                                            'resource' => $resource,
+                                            ])
+                                        @break
+
+                                        @case('snippet')
+                                            @include('visitor.partials.snippet', [
+                                            'resource' => $resource,
+                                            ])
+                                        @break
+                                    @endswitch
+                                @empty
+                                    <div>No resources found</div>
+                                @endforelse
 
                             </div>
                         </div>

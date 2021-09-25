@@ -1,7 +1,7 @@
 <template>
 	<div
 		class="modal fade show"
-		style="display: block"
+		style="display: block;"
 		tabindex="-1"
 		v-if="resource !== null"
 	>
@@ -83,7 +83,7 @@
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
 										<span class="input-group-text"
-											>With https://</span
+											>Full address</span
 										>
 									</div>
 									<input
